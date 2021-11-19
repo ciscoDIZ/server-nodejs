@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node --require 'babel-register' src/index.js",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "transpile": "babel src/index.js --out-file dist/index.js"
   },
   "repository": {
     "type": "git",
