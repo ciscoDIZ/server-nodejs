@@ -1,0 +1,33 @@
+{
+  "name": "servidor-nodejs",
+  "version": "1.0.0",
+  "description": "mi primer servidor en nodejs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node --require 'babel-register' src/index.js",
+    "watch": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciscoDIZ/server-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "server"
+  ],
+  "author": "francisco a domínguez iceta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciscoDIZ/server-nodejs/issues"
+  },
+  "homepage": "https://github.com/ciscoDIZ/server-nodejs#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  }
+}
