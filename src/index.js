@@ -1,48 +1,46 @@
 import http from 'http';
 import fs from 'fs';
 import path from "path";
-import mongoose from 'mongoose';
+import Sequelize from 'sequelize';
 
-const host = 'mongodb://127.0.0.1:27017/films';
 
-mongoose.set('debug', true);
-mongoose.Promise = global.Promise
-
-const connection = mongoose.createConnection(
-    host,
-    {maxPoolSize: 200}
-);
-
-connection.on('error', (error=>{
-    console.log(error);
-    return process.exit(1);
-}));
-
-connection.on('connected', () => {
-    console.log('mongo conectado con éxito');
+const sequelize = new Sequelize('app_data', 'postgres', '123456', {
+    host: 'localhost',
+    dialect: 'postgres',
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000,
+    }
 });
 
-const filmSchema = new mongoose.Schema(
+const Film = sequelize.define(
+    'Film',
     {
-        _id: mongoose.Schema.Types.ObjectId,
-        title: {type: String, trim: true, required: true},
-        poster: {type: String, trim: true, required: true},
+        id:{
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            field: 'id',
+            primaryKey: true,
+        },
+        title: {
+            type: Sequelize.STRING,
+            field: 'title',
+        },
+        poster: {
+            type: Sequelize.STRING,
+            field: 'poster',
+        }
     },
-    {strict: false}
+    {freezeTableName: true}
 );
 
-const Film = connection.model('Film', filmSchema);
-
-const filmDocument = new Film(
-    {
-        _id: new mongoose.Types.ObjectId(),
+Film.sync({force: true})
+    .then(() => Film.create({
         title: '12 Monos',
-        poster: 'https://fanart.tv/fanart/movies/63/movieposter/12-monkeys-55dc4423bbb69.jpg',
-    }
-);
-filmDocument.save((error => {
-    console.log(error)
-}))
+        poster: 'http://www.cartelesmix.com/carteles/cienciaficccion/12monos/docemonos29.jpg'
+    }))
+    .catch(error => console.log(error));
 
 const server = http.createServer((request, response) => {
    let filePath = request.url;
