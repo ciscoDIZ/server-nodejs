@@ -16,12 +16,18 @@ app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
     res.render('home', {
-        pageTitle: 'Node.JS',
+        pageTitle: 'Node.JS - Home',
         title: 'Mi primer servidor Node.JS',
-        message: 'pue vah ser que pug mola!'
+        message: 'Pue vah ser que pug mola!'
     });
 });
-
+app.get('/temario', (req, res) => {
+    res.render('temario',{
+        pageTitle: 'Node.JS - Temario',
+        title: 'Temario',
+        message: 'Tas movio a temario primo!'
+    })
+})
 app.listen('9000', () => {
     console.log('conexión establecida en http://localhost:9000');
 })
