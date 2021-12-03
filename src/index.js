@@ -1,4 +1,5 @@
 import express from 'express';
+import path from "path";
 import morgan from 'morgan';
 import bodyParser from "body-parser";
 
@@ -9,9 +10,16 @@ app.set('env', 'development');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: 'force'}))
+app.set('views', path.join(__dirname, 'assets/view'));
+app.set('view engine', 'pug');
+
 
 app.get('/', (req, res) => {
-    res.end('hello world');
+    res.render('home', {
+        pageTitle: 'Node.JS',
+        title: 'Mi primer servidor Node.JS',
+        message: 'pue vah ser que pug mola!'
+    });
 });
 
 app.listen('9000', () => {
