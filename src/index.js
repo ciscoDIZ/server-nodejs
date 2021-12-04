@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: 'force'}))
 app.set('views', path.join(__dirname, 'assets/view'));
 app.set('view engine', 'pug');
 
-
+app.use('/static', express.static(path.join(__dirname, 'assets/public/')));
 app.get('/', (req, res) => {
     res.render('home', {
         pageTitle: 'Node.JS - Home',
