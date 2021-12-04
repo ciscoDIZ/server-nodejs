@@ -1,8 +1,8 @@
 doctype html
 html
-    head
-        title!= pageTitle
+    include includes/head
     body
-        h1!= title
-        p!= message
-        a(href='/temario') Temario
+        include includes/header
+        .container
+            h1.bd-title Lorem ipsum dolor.
+        include includes/footer
