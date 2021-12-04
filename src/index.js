@@ -28,6 +28,13 @@ app.get('/temario', (req, res) => {
         message: 'Tas movio a temario primo!'
     })
 })
+app.get('/:user', (req, res) => {
+    res.render('user', {
+        pageTitle: 'Node.JS - Usuario',
+        title: 'Usuario',
+        message: `Bienvenido usuario ${req.params.user}`,
+    })
+});
 app.listen('9000', () => {
     console.log('conexión establecida en http://localhost:9000');
 })
