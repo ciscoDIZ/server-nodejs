@@ -1,5 +1,5 @@
 nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
-    a.navbar-brand(href='#') Navbar
+    a.navbar-brand(href='/') Node.JS
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
@@ -8,9 +8,13 @@ nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
                 a.nav-link(href='/') Home
             li.nav-item
                 a.nav-link(href='/temario') Temario
+    form.d-flex(method='get' action='/')
+        input.form-control.me-2(type="search" placeholder="Search" aria-label="Search" name='term')
+        button.btn.btn-outline-success(type="submit") Search
 
 main(role='main').my-5
     .container
-        h1.display-3 NodeJS
+        h1.display-3!= title
         p Curso NodeJS de Open Webinars en el que aprenderás cómo funciona Node.js, y su gestor de paquetes NPM, y desarrollaremos nuestro propia web, utilizando los mecanismos que nos ofrece Node.js, para luego, pasar a utilizar Express para desarrollar nuestra web, y nuestra API Rest.
-
+        if term
+            p= term

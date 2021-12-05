@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "servidor-nodejs",
   "version": "1.0.0",
   "description": "mi primer servidor en nodejs",
