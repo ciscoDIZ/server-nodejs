@@ -15,6 +15,9 @@ nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
 main(role='main').my-5
     .container
         h1.display-3!= title
-        p Curso NodeJS de Open Webinars en el que aprenderás cómo funciona Node.js, y su gestor de paquetes NPM, y desarrollaremos nuestro propia web, utilizando los mecanismos que nos ofrece Node.js, para luego, pasar a utilizar Express para desarrollar nuestra web, y nuestra API Rest.
+        if picture
+            img.img-fluid(src=`${picture}`)
+        else
+            p Curso NodeJS de Open Webinars en el que aprenderás cómo funciona Node.js, y su gestor de paquetes NPM, y desarrollaremos nuestro propia web, utilizando los mecanismos que nos ofrece Node.js, para luego, pasar a utilizar Express para desarrollar nuestra web, y nuestra API Rest.
         if term
             p= term
